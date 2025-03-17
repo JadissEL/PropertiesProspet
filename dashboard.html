@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Property Prospects Manager</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white" href="#">
+        <img src="logo.png" alt="Property Prospects Logo" class="hero-logo">
+        Property Prospects
+      </a>
+      <div class="d-flex">
+        <a href="about.html" class="btn btn-outline-light me-2">About Us</a>
+        <a href="contact.html" class="btn btn-outline-light me-2">Contact Us</a>
+        <button id="logoutBtn" class="btn btn-outline-light">Logout</button>
+      </div>
+    </div>
+  </nav>
+  <div class="container mt-5">
+    <div class="row gap-4">
+      <!-- Negotiation States on the Left
+       Negotiation States on the Left -->
+      <div class="col-lg-3 col-md-4">
+        <div class="space-y-4">
+          <div class="bg-white shadow-lg p-4 rounded-2xl">
+            <h3 class="text-lg font-bold text-blue-600 mb-2">Initial Contact</h3>
+            <div class="prospect-list bg-gray-100 rounded-xl p-3"></div>
+          </div>
+          <div class="bg-white shadow-lg p-4 rounded-2xl">
+            <h3 class="text-lg font-bold text-orange-600 mb-2">Negotiating</h3>
+            <div class="prospect-list bg-gray-100 rounded-xl p-3"></div>
+          </div>
+          <div class="bg-white shadow-lg p-4 rounded-2xl">
+            <h3 class="text-lg font-bold text-green-600 mb-2">Finalized</h3>
+            <div class="prospect-list bg-gray-100 rounded-xl p-3"></div>
+          </div>
+          <div class="bg-white shadow-lg p-4 rounded-2xl">
+            <h3 class="text-lg font-bold text-red-600 mb-2">Lost</h3>
+            <div class="prospect-list bg-gray-100 rounded-xl p-3"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form on the Right -->
+      <div class="col-lg-8 col-md-7">
+        <div class="bg-white shadow-lg p-6 rounded-2xl">
+          <h1 class="text-2xl font-bold text-gray-800 mb-6">Property Prospect Management</h1>
+          <form id="prospectForm" class="space-y-4">
+            <div class="form-group">
+              <label for="propertyLink" class="form-label">Property Link:</label>
+              <input type="url" id="propertyLink" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="contactName" class="form-label">Contact Name:</label>
+              <input type="text" id="contactName" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="contactPhone" class="form-label">Contact Phone:</label>
+              <input type="tel" id="contactPhone" class="form-control" pattern="[0-9]{10}" required>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail" class="form-label">Contact Email:</label>
+              <input type="email" id="contactEmail" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="negotiationState" class="form-label">Negotiation State:</label>
+              <select id="negotiationState" class="form-select" required>
+                <option value="initial">Initial Contact</option>
+                <option value="negotiating">Negotiating</option>
+                <option value="finalized">Finalized</option>
+                <option value="lost">Lost</option>
+              </select>
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" id="visited" class="form-check-input">
+              <label class="form-check-label" for="visited">Visited Property</label>
+            </div>
+            <div class="form-group">
+              <label for="nextSteps" class="form-label">Next Steps:</label>
+              <textarea id="nextSteps" class="form-control"></textarea>
+            </div>
+            <div class="button-group space-x-2">
+              <button type="submit" class="btn btn-primary">Save Prospect</button>
+              <button type="reset" class="btn btn-secondary">Clear Form</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer text-center bg-primary text-white py-3 mt-5">
+    <div class="container">
+      <p>&copy; 2025 Property Prospects Manager</p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token') || localStorage.getItem('token');
+        if (!token) {
+            window.location.href = 'login.html';
+        } else {
+            localStorage.setItem('token', token);
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('token');
+            window.location.href = 'login.html';
+        });
+    });
+  </script>
+</body>
+</html>

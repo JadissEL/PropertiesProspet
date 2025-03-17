@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Prospects Manager</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="public/style.css">
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <style>
+    /* Add essential styles */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('public/hero-background.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+    }
+    .navbar-brand img {
+      height: 40px;
+      width: auto;
+    }
+    .ratio {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-top: 56.25%;
+    }
+    .ratio iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <div id="root">Loading...</div>
+  
+  <script type="text/babel">
+    const data = {
+      navLinks: [
+        { href: "index.html", text: "Home" },
+        { href: "about.html", text: "About Us" }
+      ]
+    };
+
+    class Navbar extends React.Component {
+      componentDidMount() {
+        console.log("Navbar component mounted");
+      }
+
+      render() {
+        return (
+          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <a className="navbar-brand" href="#">
+              <img src="public/logo.png" alt="Logo" />
+            </a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav">
+                {this.props.navLinks.map((link, index) => (
+                  <li className="nav-item" key={index}>
+                    <a className="nav-link" href={link.href}>{link.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </nav>
+        );
+      }
+    }
+
+    class Hero extends React.Component {
+      componentDidMount() {
+        console.log("Hero component mounted");
+      }
+
+      render() {
+        return (
+          <div className="hero">
+            <div className="container text-white">
+              <h1 className="display-4">Welcome to Property Prospects Manager</h1>
+              <p className="lead">Your one-stop solution for managing property prospects.</p>
+            </div>
+          </div>
+        );
+      }
+    }
+
+    class App extends React.Component {
+      componentDidMount() {
+        console.log("App component mounted");
+      }
+
+      render() {
+        return (
+          <div>
+            <Navbar navLinks={data.navLinks} />
+            <Hero />
+          </div>
+        );
+      }
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>

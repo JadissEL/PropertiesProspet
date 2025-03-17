@@ -1,0 +1,147 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --text-color: #333;
+    --white-color: #fff;
+    --border-color: #dee2e6;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.navbar, .footer {
+    background-color: var(--primary-color);
+}
+
+.navbar-brand, .footer p {
+    color: var(--white-color) !important;
+}
+
+.navbar .btn, .button-group .btn {
+    margin-left: 10px;
+}
+
+.header {
+    background: url('header-bg.jpg') no-repeat center center;
+    background-size: cover;
+    color: var(--white-color);
+    padding: 2rem 0;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.header p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    color: var(--secondary-color);
+}
+
+.footer {
+    color: var(--white-color);
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+.hero-logo {
+    width: 50px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card, .contact-form {
+    background-color: var(--white-color);
+    border-radius: 0.75rem;
+    box-shadow: var(--box-shadow);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.card h2, .about-section h2, .contact-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card p, .about-section p, .contact-section p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+.card .btn {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card .btn:hover {
+    background-color: #0056b3;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group input[type="checkbox"] {
+    width: auto;
+}
+
+.form-group .form-check-label {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .navbar .btn {
+        margin-left: 5px;
+        margin-bottom: 10px;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .header p, .card p {
+        font-size: 1rem;
+    }
+
+    .card h2 {
+        font-size: 1.25rem;
+    }
+}
